@@ -1,0 +1,46 @@
+############################################################
+#  Moodle 4.5 LTS – Apache-Image (Debian 12 / PHP 8.3)
+############################################################
+FROM php:8.3-apache
+
+ARG  MOODLE_SERIES=405        # 4.5 → 405
+ENV  MOODLE_VERSION=4.5 \
+     MOODLE_SERIES=${MOODLE_SERIES}
+
+# ---------- System- und PHP-Abhängigkeiten ---------------
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+        git cron curl unzip \
+        libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev \
+        libzip-dev libicu-dev libxml2-dev libpq-dev \
+        libsodium-dev; \
+    docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
+    docker-php-ext-install -j"$(nproc)" \
+        gd intl soap zip mysqli pdo pdo_mysql opcache sodium bcmath; \
+    pecl install redis; \
+    docker-php-ext-enable redis; \
+    a2enmod rewrite headers env; \
+    rm -rf /var/lib/apt/lists/*
+
+# ---------- Moodle-Code ----------------------------------
+WORKDIR /var/www/html
+RUN curl -fsSL \
+        "https://download.moodle.org/download.php/direct/stable${MOODLE_SERIES}/moodle-latest-${MOODLE_SERIES}.tgz" \
+        -o moodle.tgz && \
+    tar -xzf moodle.tgz --strip-components=1 && \
+    rm moodle.tgz
+
+# ---------- Daten & Rechte -------------------------------
+RUN mkdir -p /var/moodledata && \
+    chown -R www-data:www-data /var/moodledata /var/www/html
+
+VOLUME ["/var/moodledata"]
+EXPOSE 80
+
+# ---------- Entrypoint -----------------------------------
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2-foreground"]
