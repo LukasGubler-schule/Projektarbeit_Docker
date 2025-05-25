@@ -46,7 +46,7 @@ Die vorhandene Moodle-Installation betreibt alle Dienste in einer einzelnen VM, 
 |               Rolle | Name             | Aufgabenbereich                       |
 | ------------------: | ---------------- | ------------------------------------- |
 |      Projektleitung | Gubler Lukas     | Gesamtkoordination, Planung, Review   |
-|              DevOps | Garcia SanDiego  | Docker-Setup, CI/CD-Pipelines         |
+|              DevOps | Garcia San Diego | Docker-Setup, CI/CD-Pipelines         |
 | Backend-Entwicklung | Gantenbein Kenzo | Moodle-Container, Datenbank-Migration |
 |  Qualitätssicherung | (noch offen)     | Testkonzepte, Abnahmetests            |
 
