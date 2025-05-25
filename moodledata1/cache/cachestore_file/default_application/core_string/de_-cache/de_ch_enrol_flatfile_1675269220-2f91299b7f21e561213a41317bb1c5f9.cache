@@ -1,0 +1,21 @@
+a:26:{s:8:"encoding";s:14:"Dateikodierung";s:13:"expiredaction";s:35:"Aktion bei Ablauf der Einschreibung";s:18:"expiredaction_help";s:168:"Wählen Sie, was passieren soll, wenn die Nutzereinschreibung abläuft. Beachten Sie, dass einige Nutzerdaten und -einstellungen bei der Kursabmeldung gelöscht werden.";s:14:"filelockedmail";s:268:"Die Textdatei '{$a}' für die Kurseinschreibung kann nicht vom Cronjob gelöscht werden. Dieses Problem tritt meistens bei falschen Zugriffsrechten auf. Bitte korrigieren Sie die Zugriffsrechte, damit die Datei gelöscht werden kann und nicht  erneut ausgeführt wird.";s:21:"filelockedmailsubject";s:32:"Fehler: Datei für Kursanmeldung";s:15:"flatfile:manage";s:45:"Nutzer/innen manuell in den Kurs einschreiben";s:16:"flatfile:unenrol";s:38:"Nutzer/innen manuell vom Kurs abmelden";s:18:"flatfileenrolments";s:31:"Flat-File (CSV) Einschreibungen";s:12:"flatfilesync";s:29:"CSV-Einschreibung (Flat file)";s:8:"location";s:16:"Dateiverzeichnis";s:13:"location_desc";s:118:"Geben Sie den vollständigen Pfad der Einschreibedatei an. Die Datei wird nach der Verarbeitung automatisch gelöscht.";s:11:"notifyadmin";s:35:"Administrator/innen benachrichtigen";s:14:"notifyenrolled";s:44:"Eingeschriebene Nutzer/innen benachrichtigen";s:14:"notifyenroller";s:63:"Nutzer/in benachrichtigen, die die Einschreibung veranlasst hat";s:34:"messageprovider:flatfile_enrolment";s:49:"Systemnachricht bei CSV-Einschreibung (flat file)";s:7:"mapping";s:31:"CSV-Rollenzuweisung (Flat file)";s:10:"pluginname";s:29:"CSV-Einschreibung (Flat file)";s:15:"pluginname_desc";s:856:"Die CSV-Rollenzuweisung (Flat file) arbeitet eine speziell formatierte Textdatei ab, deren Ort Sie selber festlegen. Diese Textdatei enthält kommagetrennte Listen mit 4 oder 6 Feldern pro Zeile:
+
+operation, role, user idnumber, course idnumber [, starttime [, endtime]]
+
+Die einzelnen Parameter sind:
+* operation - add | del
+* role - student | teacher | teacheredit
+* user idnumber - idnumber in the user table NB not id
+* course idnumber - idnumber in the course table NB not id
+* starttime - Startzeit (als Unixzeit) - optional
+*  endtime - Endzeit (als Unixzeit) - optional
+
+Die Datei könnte folgendermaßen aussehen:
+<pre class="informationbox">
+   add, student, 5, Kurs101
+   add, teacher, 6, Kurs101
+   add, teacheredit, 7, Kurs101
+   del, student, 8, Kurs101
+   del, student, 17, Kurs101
+   add, student, 21, Kurs101, 1091115000, 1091215000
+</pre>";s:31:"privacy:metadata:enrol_flatfile";s:140:"Das Flat-File (CSV) Einschreibungsplugin kann für künftige Einschreibungen in der enrol_flatfile-Tabelle personenbezogene Daten speichern.";s:38:"privacy:metadata:enrol_flatfile:action";s:58:"Die Einschreibung wird zum angegebenen Termin vorgenommen.";s:40:"privacy:metadata:enrol_flatfile:courseid";s:30:"Kurs-ID für die Einschreibung";s:38:"privacy:metadata:enrol_flatfile:roleid";s:47:"ID der Rolle, die zugewiesen oder entfernt wird";s:41:"privacy:metadata:enrol_flatfile:timestart";s:39:"Zeit, bei der die Einschreibung beginnt";s:39:"privacy:metadata:enrol_flatfile:timeend";s:37:"Zeit, bei der die Einschreibung endet";s:44:"privacy:metadata:enrol_flatfile:timemodified";s:46:"Zeit, bei der die Einschreibung geändert wird";s:38:"privacy:metadata:enrol_flatfile:userid";s:45:"ID der Person, der die Rolle zugeordnet wurde";}

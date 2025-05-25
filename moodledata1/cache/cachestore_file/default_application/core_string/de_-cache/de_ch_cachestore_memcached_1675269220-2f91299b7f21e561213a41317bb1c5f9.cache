@@ -1,0 +1,31 @@
+a:40:{s:12:"bufferwrites";s:16:"Buffer schreiben";s:17:"bufferwrites_help";s:328:"(De-)Aktiviert gepufferte I/O. Das Aktivieren verursacht Speicherkommandos zum 'puffern', statt zum senden. Jede Aktio, die Daten abfragt, löst Puffer statt Sendeprozesse zur externen Verbindung aus. Das Schließen oder Beenden der Verbindung verursacht ebenfalls ein Puffern der Daten zur Übertragung zur externen Verbindung.";s:9:"clustered";s:24:"Clusterserver aktivieren";s:14:"clustered_help";s:521:"Die Funktion wird genutzt, um einmal zu lesen und mehrere Funktionen auszuführen.
+
+Die Idee hinter dem Konzept liegt darin, einen verbesserten Store für Load-balanced Konfigurationen zur Verfügung zu stellen.  Der Store holt Daten von einem Server (meist localhost) setzt sie aber für mehrere (alle server im load-balanced Pool). Für Caches mit sehr hohen read-to-set ratios spart dies Last im Netzwerk deutlich.
+
+Wenn die Einstellung aktiviert wird, wird der oben aufgeführte Server zum Abholen der Daten verwandt.";s:15:"clusteredheader";s:16:"Server aufteilen";s:4:"hash";s:14:"Hash-Verfahren";s:9:"hash_help";s:180:"Legt den Hash-Algorithmus für die Schlüssel fest. Jeder Hash-Algorithmus hat seine Vor- und Nachteile. Nehmen Sie den Standardwert wenn sie sich nicht weiteren Details auskennen.";s:12:"hash_default";s:18:"Standard (einzeln)";s:8:"hash_md5";s:3:"MD5";s:8:"hash_crc";s:3:"CRC";s:12:"hash_fnv1_64";s:7:"FNV1_64";s:13:"hash_fnv1a_64";s:8:"FNV1A_64";s:12:"hash_fnv1_32";s:7:"FNV1_32";s:13:"hash_fnv1a_32";s:8:"FNV1A_32";s:10:"hash_hsieh";s:5:"Hsieh";s:11:"hash_murmur";s:6:"Murmur";s:8:"isshared";s:15:"Geteilter Cache";s:13:"isshared_help";s:648:"Wird ihr memcached Server auch von anderen Anwendungen genutzt?
+
+Wenn der Cache mit anderen Anwendungen geteilt wird, dann wird jeder Schlüssel individuell gelöscht um sicherzustellen, dass nur Daten dieser Anwedungen gelöscht werden (Daten in externen Anwendungscaches bleiben unverändert). Dies kann zu verminderter Leistung führen, wenn der Cache geleert wird, dies hängt von ihren Server Einstellungen ab.
+
+Wenn Sie einen bestimmten Cache für diese Anwendung nutzen, dann kann der ganze Cache geleert werden ohne Risiko die Cache Daten einer anderen Anwendung zu zerstören.
+Die Löschung des Caches sollte zu erhöhter Leistung führen.";s:10:"pluginname";s:9:"Memcached";s:26:"privacy:metadata:memcached";s:94:"Das Memcache Cachestore-Plugin speichert kurzfristig Daten. Sie werden regelmäßig gelöscht.";s:31:"privacy:metadata:memcached:data";s:40:"Verschiedene im Cache gespeicherte Daten";s:6:"prefix";s:17:"Prefix-Schlüssel";s:11:"prefix_help";s:201:"Dies kann verwandt werden, um eine 'domain' für Ihre Schlüsselwerte für mehrere memcached Speicher auf einer einzelnen memcached Installation zu erzeugen. Sie darf nicht länger als 16 Zeichen sein.";s:13:"prefixinvalid";s:60:"Ungültiger Schlüssel. Verwenden Sie nur a-z, A-Z, 0-9, -_.";s:19:"serialiser_igbinary";s:19:"Serialiser igbinary";s:15:"serialiser_json";s:15:"Serialiser JSON";s:14:"serialiser_php";s:23:"Standard-PHP-Serialiser";s:7:"servers";s:6:"Server";s:12:"servers_help";s:540:"Diese Option legt die Server für den Memcached Adapter fest.
+Verwenden Sie für jeden Server eine neue Zeile. Tragen Sie die Serveradresse, den Port (optonal) und die Gewichtung (optonal) ein.  Wenn kein Port angegeben ist, wird als Standard Port 11211 verwendet.
+
+Beispiele:
+<pre>
+server.url.com
+ipaddress:port
+servername:port:weight
+</pre>
+
+Wenn unten *Cluster-Server aktivieren* ausgewählt ist, darf nur ein Server angegeben sein. Normalerweise ist das ein Name, der sich auf die lokale Maschine bezieht, z.B. 127.0.0.1 oder localhost.";s:21:"serversclusterinvalid";s:81:"Wenn das Clustering aktiviert wird, ist die Angabe genau eines Servers notwendig.";s:10:"setservers";s:17:"Server auswählen";s:15:"setservers_help";s:483:"In der Liste sind die zu aktualisierenden Server aufgeführt, wenn Daten im Cache verändert werden, u.z. mit vollständigem Namen für jeden Server im Pool.
+Es **muss** den Server enthalten, der unter *Server* oben gelistet, möglicherweise mit einem anderen Hostnamen.
+In jeder Zeile wird ein Server mit Serveradresse und optional einem Port eingetragen.
+Wenn kein Port eingetragen wird, wird der Standard-Port 11211 verwendet.
+
+Beispiel:
+<pre>
+server.url.com
+ipaddress:port
+</pre>";s:22:"sessionhandlerconflict";s:194:"Warnung: Eine Memcached Instanz ({$a}) ist so konfiguriert, dass sie den gleichen Memcached Server wie Sessons verwendet. Das Löschen aller Caches wird gleichzeitig auch alle Sessions löschen.";s:11:"testservers";s:10:"Testserver";s:16:"testservers_desc";s:275:"In diesem Feld können eine oder mehrere Verbindungsadressen zu Memcached-Servern angegeben werden. Wenn ein entsprechender Testserver vorhanden ist, kann die Memcached-Performance über die Cache-Seite im Administrationsblock getestet werden.
+Beispielserver: 127.0.0.1:11211";s:14:"usecompression";s:22:"Komprimierung benutzen";s:19:"usecompression_help";s:221:"(De-)Aktiviert die Kompression für die Ladelast. Nach der Aktivierung werden Werte, die eine definierte Grenzgröße (derzeit 100 Bytes) übersteigen, beim Speichern komprimiert und beim Aufruf transparent dekomprimiert.";s:13:"useserialiser";s:20:"Serialiser verwenden";s:18:"useserialiser_help";s:339:"Legt das Serialisierungsprogramm für die Serialisierung nicht-skalare Werte fest. Die gültigen Serialisierungsprogramme sind Memcached :: SERIALIZER_PHP oder Memcached :: SERIALIZER_IGBINARY. Letztere wird nur unterstützt, wenn memcached mit konfiguriert ist - enable-memcached-igbinary Option und die igbinary Erweiterung geladen wird.";s:21:"upgrade200recommended";s:374:"Wir empfehlen Ihnen ein Upgrade Ihrer Memcached PHP Erweiterung auf Version 2.0.0 oder höher.
+Die von Ihnen derzeit verwendete Memcached PHP Erweiterung bietet nicht die Funktionalität, die Moodle nutzt, um ein Sandbox Cache sicherzustellen. Wir empfehlen Ihnen bis zum Upgrade keine weiteren Anwendungen mit denselben Memcached Servern zu konfigurieren, die Moodle nutzt.";}

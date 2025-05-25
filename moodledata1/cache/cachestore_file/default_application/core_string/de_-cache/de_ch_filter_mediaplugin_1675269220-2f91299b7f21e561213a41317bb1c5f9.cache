@@ -1,0 +1,3 @@
+a:5:{s:13:"fallbackaudio";s:15:"Link für Audio";s:13:"fallbackvideo";s:15:"Link für Video";s:10:"filtername";s:18:"Multimedia-Plugins";s:11:"linktomedia";s:333:"Der Filter 'Multimedia-Plugins' sucht Links im Text, die auf Multimedia verweisen, und ersetzt diese durch einen entsprechenden MediaPlayer-Code zum Abspielen. Der Filter ersetzt auch die HTML-Tags &lt;video&gt; und &lt;audio&gt; durch den entsprechenden Code für Video- und Audio-Player.
+
+<a href="{$a}"> MediaPlayer verwalten </a>";s:16:"privacy:metadata";s:62:"Das Multimedia-Plugin speichert keine personenbezogenen Daten.";}

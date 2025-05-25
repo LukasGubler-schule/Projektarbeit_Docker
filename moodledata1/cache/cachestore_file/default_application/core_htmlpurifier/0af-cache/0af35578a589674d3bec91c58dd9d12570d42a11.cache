@@ -1,0 +1,11 @@
+s:389:"<p>Ein Begrüßungstext kann ein einfacher Text sein oder im Moodle-Auto-Format auch HTML-Tags und MultiLang-Tags enthalten.</p>
+
+<p>Sie können folgende Platzhalter im Text verwenden:</p>
+
+<ul>
+<li>Kursname {$a-&gt;coursename}</li>
+<li>Link zum Nutzerprofil {$a-&gt;profileurl}</li>
+<li>Nutzer-E-Mail-Adresse {$a-&gt;email}</li>
+<li>Vollständiger Nutzername {$a-&gt;fullname}</li>
+</ul>
+";

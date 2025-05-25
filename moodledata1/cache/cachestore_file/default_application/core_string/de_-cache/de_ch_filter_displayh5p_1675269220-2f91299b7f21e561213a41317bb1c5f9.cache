@@ -1,0 +1,7 @@
+a:4:{s:18:"allowedsourceslist";s:16:"Erlaubte Quellen";s:22:"allowedsourceslistdesc";s:416:"Liste von URLs, von denen Nutzer/innen H5P-Inhalte einbetten dürfen. Wenn keine URL angegeben ist, bleiben alle URLs als Links erhalten und werden nicht als eingebettete H5P-Inhalte angezeigt.
+
+'[id]' ist ein Platzhalter für die H5P-Inhalts-ID in der externen Quelle.
+
+Beispiele:
+<br>- H5P.com: https://[xxxxxx].h5p.com/content/[id]
+<br>- Wordpress: http://myserver/wp-admin/admin-ajax.php?action=h5p_embed&id=[id]";s:10:"filtername";s:12:"H5P anzeigen";s:16:"privacy:metadata";s:66:"Der Filter 'H5P anzeigen' speichert keine personenbezogenen Daten.";}

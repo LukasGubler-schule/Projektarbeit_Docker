@@ -1,0 +1,9 @@
+a:12:{s:10:"filtername";s:7:"MathJax";s:20:"additionaldelimiters";s:27:"Weitere Gleichungsbegrenzer";s:25:"additionaldelimiters_help";s:310:"Der MathJax-Filter durchsucht den Text nach Gleichungen, die innerhalb von Begrenzungszeichen stehen.
+
+Die Liste der erlaubten Begrenzungszeichen kann hier eingefügt werden (beispielsweise verwendet AsciiMath `). Begrenzer können aus mehreren Zeichen bestehen, mehrere Einträge werden durch Kommas getrennt.";s:8:"httpsurl";s:11:"MathJax URL";s:13:"httpsurl_help";s:40:"Vollständige URL zur MathJax Bibliothek";s:22:"texfiltercompatibility";s:26:"TeX-Filter Kompatibilität";s:27:"texfiltercompatibility_help";s:208:"Der MathJax-Filter kann als Ersatz des TeX-Filters verwendet werden.
+
+Um alle Begrenzerzeichen des TeX-Filters zu nutzen, wird MathJax so konfiguriert, dass alle Gleichungen 'inline' im Text angezeigt werden.";s:12:"localinstall";s:27:"Lokale MathJax Installation";s:17:"localinstall_help";s:466:"Die MathJax-Konfiguration verwendet die CDN Version von MathJax. MathJax kann jedoch auch lokal installiert werden.
+
+Sinnvoll ist dies, um Bandbreite einzusparen oder um Proxy bedingte Beschränkungen zu umgehen.
+
+Um MathJax lokal zu installieren, laden Sie die Bibliothek von https://www.mathjax.org herunter und installieren Sie sie auf einem Webserver. Ändern Sie danach die Filter-Einstellungen httpurl und/oder httpsurl, um auf die lokale Version zu verweisen.";s:15:"mathjaxsettings";s:21:"MathJax Konfiguration";s:20:"mathjaxsettings_desc";s:181:"Die voreingestellte MathJax Konfiguration ist in den meisten Fällen passend, aber MathJax ist in hohem Maße konfigurierbar. Alle Standardoptionen können hier hinzugefügt werden.";s:16:"privacy:metadata";s:59:"Das MathJax-Plugin speichert keine personenbezogenen Daten.";}
