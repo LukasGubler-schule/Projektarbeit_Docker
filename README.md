@@ -14,11 +14,6 @@
    * [Unterschiedliche Container](#unterschiedliche-container)
    * [Schritt-für-Schritt-Anleitung: Nutzung des Moodle-Images](#schritt-für-schritt-anleitung-nutzung-des-moodle-images)
    * [Aufbau von Dockerfile und docker-entrypoint.sh](#aufbau-von-dockerfile-und-docker-entrypointsh)
-4. [Einführung](#einführung)
-
-   * [Abnahmetest](#abnahmetest)
-   * [Einführungskonzept](#einführungskonzept)
-   * [Präsentation](#präsentation)
 
 ---
 
@@ -324,42 +319,5 @@ chown -R www-data:www-data /var/moodledata /var/www/html
 # -----------------------------------------------------------------------------
 exec "$@"
 ```
-
-## Einführung
-
-### Abnahmetest
-
-| Testfall | Beschreibung                              |  Mittel | Ergebnis    | Datum      | Tester       |
-| -------: | ----------------------------------------- | ------: | ----------- | ---------- | ------------ |
-|     T-01 | Aufruf der Moodle-Weboberfläche (`/`)     | Browser | Erfolgreich | 22.05.2025 | Gubler Lukas |
-|     T-02 | Prüfung laufender Container (`docker ps`) |     CLI | Erfolgreich | 22.05.2025 | Gubler Lukas |
-|     T-03 | Datenbankzugriff via phpMyAdmin           | Browser | Erfolgreich | 22.05.2025 | Gubler Lukas |
-|     T-04 | Validierung der Datenintegrität           |     GUI | Erfolgreich | 22.05.2025 | Gubler Lukas |
-
-### Einführungskonzept
-
-1. **Backup der Altumgebung**
-
-   * Export der VM-Daten (SQL-Dump, Moodle-Datenordner).
-2. **Deployment**
-
-   * Bereitstellung der Docker-Container auf dem Zielsystem.
-3. **DNS und SSL**
-
-   * Einrichten einer Subdomain `moodle.example.com` und automatisches Let's Encrypt-Zertifikat über `certbot`.
-4. **Schulung**
-
-   * 2-stündiger Workshop für Administratoren: Bedienung der Container, Wartung, Troubleshooting.
-5. **Monitoring und Go-Live**
-
-   * Erstes Monitoring mittels `docker stats` täglich für eine Woche.
-
-### Präsentation
-
-* **PowerPoint**: Übersicht über Ziele, Architektur, Demo, Lessons Learned.
-* **Live-Demo**: Vorstellung der migratierten Plattform anhand eines Musterkurses.
-* **Zeitplan**: 10–15 Minuten (Präsentationstermin: 01.06.2025).
-
----
 
 *Dokument erstellt am: 22.05.2025*
