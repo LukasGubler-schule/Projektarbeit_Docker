@@ -68,8 +68,8 @@ In dieser Phase wurden folgende Schwerpunkte fachlich bearbeitet:
 1. **Docker-Grundlagen**: Installation und Konfiguration von Docker Engine (≥ 27.0.5) und Docker Compose (≥ 2.24.5) auf Ubuntu und WSL 2.
 2. **Netzwerktechnik**: Aufbau eines dedizierten Docker-Netzwerks (`moodle_net`) für sichere Service-Kommunikation.
 3. **Datenpersistenz**: Konzeption und Einrichtung von Docker Volumes (`moodle_data`, `db_data`) zur dauerhaften Speicherung von Moodle- und Datenbankdaten.
-4. **Security**: Nutzung minimaler, aktueller Basisimages, regelmäßige Updates über Build-Pipelines und sichere Verwaltung von Zugangsdaten durch Umgebungsvariablen und `.env`-Dateien.
-5. **Testautomatisierung**: Einsatz von automatisierten Smoke-Tests (z. B. `curl`-Aufrufe) und manuellen Abnahmetests gemäß Testkonzept.
+4. **Security**: Nutzung minimaler, aktueller Basisimages, regelmässige Updates über Build-Pipelines und sichere Verwaltung von Zugangsdaten durch Umgebungsvariablen und `.env`-Dateien.
+5. **Testautomatisierung**: Einsatz von automatisierten Smoke-Tests (z. B. `curl`-Aufrufe) und manuellen Abnahmetests gemäss Testkonzept.
 
 ### System- und Konfigurationsanforderungen
 
@@ -203,7 +203,7 @@ Diese Anleitung wurde mit dem Original-Repository-Pfad getestet und funktioniert
    * Moodle: [http://localhost:8080](http://localhost:8080)
    * phpMyAdmin: [http://localhost:8081](http://localhost:8081)
 
-10. **Moodle-Erstinstallation abschließen**
+10. **Moodle-Erstinstallation abschliessen**
 
     * Im Browser den Installationsassistenten durchlaufen: Sprache wählen, DB-Verbindung prüfen, Admin-Nutzer anlegen.
 
@@ -320,7 +320,7 @@ fi
 chown -R www-data:www-data /var/moodledata /var/www/html
 
 # ----------------------------------------------------------------------------- 
-# 3) Container-CMD ausführen (standardmäßig apache2-foreground)
+# 3) Container-CMD ausführen (standardmässig apache2-foreground)
 # -----------------------------------------------------------------------------
 exec "$@"
 ```
