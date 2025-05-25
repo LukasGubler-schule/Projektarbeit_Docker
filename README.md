@@ -103,7 +103,7 @@ Diese Anleitung erklärt, wie eine bestehende Moodle-Installation (Code, Datenba
    mkdir -p ~/moodle-docker-export
    cd ~/moodle-docker-export
    ```
-2. Wenn man anschließend die Unterverzeichnisse anlegt, dann entsteht diese Struktur:
+2. Wenn man anschliessend die Unterverzeichnisse anlegt, dann entsteht diese Struktur:
 
    ```
    moodle-docker-export/
@@ -131,7 +131,7 @@ Diese Anleitung erklärt, wie eine bestehende Moodle-Installation (Code, Datenba
    cp -r /var/www/moodledata/* ./moodledata1/
    ```
 
-Hinweis: Ab diesem Schritt wird ausschließlich `moodledata1` verwendet.
+Hinweis: Ab diesem Schritt wird ausschliesslich `moodledata1` verwendet.
 
 ---
 
@@ -292,7 +292,7 @@ mysqldump -u root -p moodle > moodle.sql
 
 ## 2. Projektverzeichnis und Ordnerstruktur anlegen
 
-1. Terminal öffnen und ins Home‑Verzeichnis wechseln, anschließend das Projektverzeichnis erstellen:
+1. Terminal öffnen und ins Home‑Verzeichnis wechseln, anschliessend das Projektverzeichnis erstellen:
 
    ```bash
    mkdir -p ~/moodle-docker
