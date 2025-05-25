@@ -89,16 +89,6 @@ In dieser Phase wurden folgende Schwerpunkte fachlich bearbeitet:
 | R5 (Sicherheit)     | Sichere Verwaltung von Zugangsdaten und Basisimages            | `.env`-Datei, Umgebungsvariablen, minimalistische Images       |
 | R6 (Dokumentation)  | Vollständige Dokumentation aller Schritte                      | Dieses Dokument, Schritt-für-Schritt-Anleitung, Testprotokolle |
 
-### Screenshots der funktionierenden Lösung
-
-![image](https://github.com/user-attachments/assets/0335e8e9-7431-40e1-b5f0-1475b8226209)
-
-
-
-
-
-
-
 # Moodle-Instanz in Docker Compose exportieren
 
 Diese Anleitung erklärt, wie eine bestehende Moodle-Installation (Code, Datenbank und `moodledata`) in ein portables Docker-Compose-Setup überführt wird.&#x20;
