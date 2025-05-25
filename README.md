@@ -93,231 +93,404 @@ In dieser Phase wurden folgende Schwerpunkte fachlich bearbeitet:
 
 ![image](https://github.com/user-attachments/assets/0335e8e9-7431-40e1-b5f0-1475b8226209)
 
-### Datenübernahme
 
-1. **SQL-Dump erstellen:**
 
-   ```bash
-   mysqldump -u root -p --single-transaction moodle_db > moodle_backup.sql
-   ```
-2. **Import in Container:**
 
-   ```bash
-   docker cp moodle_backup.sql phpmyadmin:/var/lib/mysql/moodle_backup.sql
-   docker exec -it phpmyadmin bash -c "mysql -u root -p moodle_db < /var/lib/mysql/moodle_backup.sql"
-   ```
-3. **Validierung:**
 
-   * Überprüfung der Kursliste in der Moodle-Oberfläche.
-   * Überprüfung von Benutzerkonten und Berechtigungen.
-   * Stichprobenartige Kontrolle hochgeladener Mediendateien.
 
-### Unterschiedliche Container
 
-Die Gesamtlösung besteht aus den folgenden, logisch getrennten Containern:
+# Moodle-Instanz in Docker Compose exportieren
 
-* **db:** MariaDB 10.11, konfiguriert über `.env`-Variablen, inkl. Persistenz im Volume `db_data`.
-* **moodle:** Apache 2.4 + PHP 8.3, Moodle 4.5.2, Quellcode retrieved via Download-Script, Daten im Volume `moodle_data`.
-* **phpmyadmin:** `phpmyadmin/phpmyadmin` als administratives Frontend zur Datenbankverwaltung.
+Diese Anleitung erklärt, wie eine bestehende Moodle-Installation (Code, Datenbank und `moodledata`) in ein portables Docker-Compose-Setup überführt wird.&#x20;
 
-### Schritt-für-Schritt-Anleitung: Nutzung des Moodle-Images
+---
 
-Diese Anleitung wurde mit dem Original-Repository-Pfad getestet und funktioniert auf gängigen Linux- oder macOS-Systemen sowie unter WSL2 auf Windows.
+## 1. Projektverzeichnis und Struktur anlegen
 
-1. **Repository klonen**
+1. Wenn man in einem Terminal ins gewünschte Home-Verzeichnis wechselt und das Projektverzeichnis erstellt, dann steht folgendes Verzeichnis zur Verfügung:
 
    ```bash
-   git clone https://github.com/LukasGubler-schule/Projektarbeit_Docker.git
+   mkdir -p ~/moodle-docker-export
+   cd ~/moodle-docker-export
+   ```
+2. Wenn man anschließend die Unterverzeichnisse anlegt, dann entsteht diese Struktur:
+
+   ```
+   moodle-docker-export/
+   ├── db/            # Persistent Volume für MariaDB
+   ├── moodle/        # Moodle-Code
+   ├── moodledata1/   # Verzeichnis für moodledata
+   └── moodle.sql     # SQL-Dump der Datenbank (wird später erstellt)
    ```
 
-2. **Docker-Netzwerk anlegen** (für die interne Kommunikation der Container)
+> **Abbildung 1:** Ausgabe von `ls` im Verzeichnis `moodle-docker-export`
+![image](https://github.com/user-attachments/assets/0987eb71-7ef6-428a-89fd-756c13011861)
+
+---
+
+## 2. Moodle-Code und moodledata übernehmen
+
+1. Wenn man den Moodle-Quellcode aus der alten Installation übernimmt, dann kopiert man mit:
 
    ```bash
-   docker network create moodle_net
+   cp -r /var/www/html/* ./moodle/
    ```
-
-3. **In das Image-Verzeichnis wechseln**
-   Achte auf das Leerzeichen im Ordnernamen:
+2. Wenn man das `moodledata`-Verzeichnis übernimmt, dann verwendet man:
 
    ```bash
-   cd Projektarbeit_Docker/"moodle image"
+   cp -r /var/www/moodledata/* ./moodledata1/
    ```
 
-4. **Docker-Image für Moodle bauen**
+Hinweis: Ab diesem Schritt wird ausschließlich `moodledata1` verwendet.
+
+---
+
+## 3. Datenbank-Dump erstellen
+
+1. Wenn man einen SQL-Dump der bestehenden Moodle-Datenbank anfertigt, dann lautet der Befehl:
 
    ```bash
-   docker build -t moodle-custom .
+   mysqldump -u root -p moodle > moodle.sql
+   ```
+2. Nach Eingabe des MySQL-Root-Passworts liegt die Datei `moodle.sql` im Projektverzeichnis.
+
+---
+
+## 4. Docker-Compose-Datei anlegen
+
+1. Wenn man im Projektverzeichnis eine Datei `docker-compose.yml` erstellt und den folgenden Inhalt einfügt, dann definiert man beide Dienste (Datenbank und Webserver) sowie das gemeinsame Netzwerk:
+
+   ```yaml
+   version: '3.9'
+
+   services:
+     mariadb_exported:
+       image: mariadb:10.5
+       container_name: moodle_db_exported
+       restart: unless-stopped
+       environment:
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_DATABASE: moodle
+         MYSQL_USER: moodle
+         MYSQL_PASSWORD: moodle
+       volumes:
+         - ./db:/var/lib/mysql
+       networks:
+         - moodle_net
+
+     moodle_exported:
+       image: moodlehq/moodle-php-apache:7.4
+       container_name: moodle_exported
+       restart: unless-stopped
+       depends_on:
+         - mariadb_exported
+       ports:
+         - "8085:80"
+       volumes:
+         - ./moodle:/var/www/html
+         - ./moodledata1:/var/www/moodledata1
+       environment:
+         MOODLE_DOCKER_DBTYPE: mariadb
+         MOODLE_DOCKER_DBHOST: mariadb_exported
+       networks:
+         - moodle_net
+
+   networks:
+     moodle_net:
+       driver: bridge
    ```
 
-5. **Persistente Volumes erstellen** (für Moodle-Daten und die Datenbank)
+> **Abbildung 2:** Vollständiger Inhalt der Datei `docker-compose.yml`
+> ![image](https://github.com/user-attachments/assets/9fc3153f-b89a-4e40-9a48-5e343f0a9832)
+
+---
+
+## 5. Moodle-Konfiguration anpassen
+
+1. Wenn man in das Verzeichnis `moodle/` wechselt und die Datei `config.php` öffnet, dann müssen folgende Einstellungen angepasst werden:
+
+   ```php
+   $CFG->dbtype    = 'mariadb';
+   $CFG->dblibrary = 'native';
+   $CFG->dbhost    = 'mariadb_exported';
+   $CFG->dbname    = 'moodle';
+   $CFG->dbuser    = 'moodle';
+   $CFG->dbpass    = 'moodle';
+
+   $CFG->dataroot  = '/var/www/moodledata1';
+   ```
+2. Wenn man die Datei speichert, dann ist die Verbindung zwischen Moodle und der Docker-Datenbank sichergestellt.
+
+---
+
+## 6. Docker-Container starten
+
+1. Wenn man im Projektverzeichnis folgenden Befehl ausführt, dann werden die beiden Container im Hintergrund gestartet:
 
    ```bash
-   docker volume create moodle_data
-   docker volume create db_data
+   docker compose up -d
    ```
+2. Wenn man mit `docker ps` prüft, dann sollten die Container `moodle_db_exported` und `moodle_exported` laufen.
 
-6. **MariaDB-Container starten**
-   (Ersetze `secureRootPass` und `securePass` nach Bedarf)
+---
+
+## 7. Datenbank-Dump importieren
+
+1. Wenn man den Dump in den Datenbank-Container kopiert, dann nutzt man:
 
    ```bash
-   docker run -d \
-     --name db \
-     --network moodle_net \
-     -e MYSQL_ROOT_PASSWORD=secureRootPass \
-     -e MYSQL_DATABASE=moodle \
-     -e MYSQL_USER=moodle \
-     -e MYSQL_PASSWORD=securePass \
-     -v db_data:/var/lib/mysql \
-     mysql:10.11
+   docker cp moodle.sql moodle_db_exported:/moodle.sql
    ```
-
-7. **Moodle-Container starten**
+2. Wenn man in den MariaDB-Container einloggt, dann lautet der Befehl:
 
    ```bash
-   docker run -d \
-     --name moodle \
-     --network moodle_net \
-     -p 8080:80 \
-     -v moodle_data:/var/www/html \
-     moodle-custom
+   docker exec -it moodle_db_exported bash
    ```
-
-8. **phpMyAdmin-Container starten** (optional für DB-Administration)
+3. Wenn man den Dump importiert, dann führt man aus:
 
    ```bash
-   docker run -d \
-     --name phpmyadmin \
-     --network moodle_net \
-     -p 8081:80 \
-     -e PMA_HOST=db \
-     phpmyadmin/phpmyadmin
+   mysql -u root -p moodle < /moodle.sql
    ```
 
-9. **Zugriff auf Dienste**
+   Nach Eingabe des Passworts (`root`) ist die Datenbank migriert.
+4. Wenn man die Container-Shell verlässt, dann mit `exit`.
 
-   * Moodle: [http://localhost:8080](http://localhost:8080)
-   * phpMyAdmin: [http://localhost:8081](http://localhost:8081)
+---
 
-10. **Moodle-Erstinstallation abschliessen**
+## 8. Dateiberechtigungen anpassen (optional)
 
-    * Im Browser den Installationsassistenten durchlaufen: Sprache wählen, DB-Verbindung prüfen, Admin-Nutzer anlegen.
+1. Wenn Moodle beim Zugriff auf `moodledata1` Rechteprobleme meldet, dann kann man im Web-Container die Berechtigungen anpassen:
 
-11. **Image aktualisieren und Container neu starten**
-    Falls sich das `Dockerfile` oder `docker-entrypoint.sh` ändert:
+   ```bash
+   docker exec -it moodle_exported bash
+   chown -R www-data:www-data /var/www/moodledata1
+   exit
+   ```
 
-    ```bash
-    cd Projektarbeit_Docker/"moodle image"
-    docker build -t moodle-custom .
-    docker stop moodle && docker rm moodle
-    docker run -d --name moodle --network moodle_net -p 8080:80 -v moodle_data:/var/www/html moodle-custom
-    ```
+---
 
-### Aufbau von Dockerfile und docker-entrypoint.sh
+## 9. Funktionstest im Browser
 
-#### Dockerfile
+1. Wenn man im Browser die URL `http://localhost:8085` aufruft, dann erscheint die typische Moodle-Startseite mit allen migrierten Kursen.
 
-```dockerfile
-############################################################
-#  Moodle 4.5 LTS – Apache-Image (Debian 12 / PHP 8.3)
-############################################################
-# Basis-Image mit Apache und PHP 8.3
-FROM php:8.3-apache
+> **Abbildung 3:** Beispielansicht des migrierten Moodle-Frontends
+> ![image](https://github.com/user-attachments/assets/60bdfcff-a38f-4371-b34c-b8d7db96a586)
 
-# Versionsparameter für Moodle
-ARG MOODLE_SERIES=405        # 4.5 → 405
-ENV MOODLE_VERSION=4.5 \
-    MOODLE_SERIES=${MOODLE_SERIES}
 
-# ---------- System- und PHP-Abhängigkeiten -----------
-# Installation aller nötigen Bibliotheken und PHP-Erweiterungen
-RUN set -eux; \
-    apt-get update; \
-    apt-get install -y --no-install-recommends \
-        git cron curl unzip \
-        libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev \
-        libzip-dev libicu-dev libxml2-dev libpq-dev \
-        libsodium-dev; \
-    docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
-    docker-php-ext-install -j"$(nproc)" \
-        gd intl soap zip mysqli pdo pdo_mysql opcache sodium bcmath; \
-    pecl install redis; \
-    docker-php-ext-enable redis; \
-    a2enmod rewrite headers env; \
-    rm -rf /var/lib/apt/lists/*
 
-# ---------- Moodle-Code --------------------------------
-# Herunterladen und Entpacken der Moodle-Instanz
-WORKDIR /var/www/html
-RUN curl -fsSL \
-        "https://download.moodle.org/download.php/direct/stable${MOODLE_SERIES}/moodle-latest-${MOODLE_SERIES}.tgz" \
-        -o moodle.tgz && \
-    tar -xzf moodle.tgz --strip-components=1 && \
-    rm moodle.tgz
 
-# ---------- Daten & Rechte -----------------------------
-# Anlegen des Moodle-Datenverzeichnisses und Setzen von Dateirechten
-RUN mkdir -p /var/moodledata && \
-    chown -R www-data:www-data /var/moodledata /var/www/html
 
-# Persistentes Volume für Moodle-Daten
-VOLUME ["/var/moodledata"]
-# Exponieren des HTTP-Ports
-EXPOSE 80
 
-# ---------- Entrypoint ---------------------------------
-# Kopieren und Ausführbar machen des Entry-Point-Skripts
-COPY docker-entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
-# Definieren des Entrypoints und Standard-Kommandos
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["apache2-foreground"]
-```
+# Moodle-Instanz in Docker Compose migrieren
 
-#### docker-entrypoint.sh
+Diese Anleitung erklärt, wie eine bestehende Moodle‑Instanz (Code, Datenbank und `moodledata`) in ein Docker‑Compose‑Setup mit PHP 8.1 und MariaDB 10.5 überführt wird.
+
+---
+
+## 1. SQL‑Dump der Datenbank erstellen
+
+Wenn die bestehende Moodle‑Datenbank gesichert werden soll, dann folgenden Befehl ausführen:
 
 ```bash
-#!/usr/bin/env bash
-set -e
-
-# -----------------------------------------------------------------------------
-#  Moodle 4.5 LTS – Entrypoint
-#  – führt beim ersten Start die CLI-Installation durch
-#  – startet danach den Apache im Vordergrund
-# -----------------------------------------------------------------------------
-
-# Standardwerte (können bei `docker run -e …` überschrieben werden)
-: "${MOODLE_LANG:=en}"
-: "${MOODLE_WWWROOT:=http://localhost}"
-: "${MOODLE_DBTYPE:=mysqli}"
-: "${MOODLE_DBHOST:=db}"
-: "${MOODLE_DBNAME:=moodle}"
-: "${MOODLE_DBUSER:=moodle}"
-: "${MOODLE_DBPASS:=moodle}"
-: "${MOODLE_ADMIN_USER:=admin}"
-: "${MOODLE_ADMIN_PASS:=Admin!2025}"
-: "${MOODLE_ADMIN_EMAIL:=admin@example.com}"
-
-# ----------------------------------------------------------------------------- 
-# 1) Erstinstallation, falls keine config.php vorhanden
-# -----------------------------------------------------------------------------
-if [ ! -f /var/www/html/config.php ]; then
-  echo ">> config.php fehlt – Moodle CLI-Installer wird gestartet …"
-
-  php /var/www/html/admin/cli/install.php \n      --chmod=2770 \n      --lang="${MOODLE_LANG}" \n      --wwwroot="${MOODLE_WWWROOT}" \n      --dataroot=/var/moodledata \n      --dbtype="${MOODLE_DBTYPE}" \n      --dbhost="${MOODLE_DBHOST}" \n      --dbname="${MOODLE_DBNAME}" \n      --dbuser="${MOODLE_DBUSER}" \n      --dbpass="${MOODLE_DBPASS}" \n      --fullname="Moodle Site" \n      --shortname="Moodle" \n      --adminuser="${MOODLE_ADMIN_USER}" \n      --adminpass="${MOODLE_ADMIN_PASS}" \n      --adminemail="${MOODLE_ADMIN_EMAIL}" \n      --agree-license \n      --non-interactive
-else
-  echo ">> config.php vorhanden – Überspringe CLI-Installation."
-fi
-
-# ----------------------------------------------------------------------------- 
-# 2) Rechte sicherstellen (wichtig bei Bind-Mounts)
-# -----------------------------------------------------------------------------
-chown -R www-data:www-data /var/moodledata /var/www/html
-
-# ----------------------------------------------------------------------------- 
-# 3) Container-CMD ausführen (standardmässig apache2-foreground)
-# -----------------------------------------------------------------------------
-exec "$@"
+mysqldump -u root -p moodle > moodle.sql
 ```
+
+* Nach Eingabe des MySQL‑Root‑Passworts wird die Datei `moodle.sql` im aktuellen Verzeichnis erzeugt.
+
+---
+
+## 2. Projektverzeichnis und Ordnerstruktur anlegen
+
+1. Terminal öffnen und ins Home‑Verzeichnis wechseln, anschließend das Projektverzeichnis erstellen:
+
+   ```bash
+   mkdir -p ~/moodle-docker
+   cd ~/moodle-docker
+   ```
+2. Die folgenden Ordner und Dateien anlegen:
+
+   ```plaintext
+   moodle-docker/
+   ├── docker-compose.yml   # Definition für Web- und Datenbank-Services
+   ├── Dockerfile           # Build-Anweisungen für PHP 8.1 + Apache
+   ├── moodle.sql           # SQL-Dump der Moodle-Datenbank
+   ├── moodle/              # Moodle‑Quellcode (Git-Repository)
+   └── moodledata/          # Bestehendes Datenverzeichnis
+   ```
+
+> **Abbildung 1:** Ausgabe von `ls` im Verzeichnis `moodle-docker`
+> ![image](https://github.com/user-attachments/assets/e29bb8e6-8c1f-4c89-84ee-c228f1b005df)
+
+---
+
+## 3. Moodle‑Code aus Git auschecken
+
+Um den Moodle‑Quellcode in der stabilen Version 4.5 herunterzuladen, dann folgende Befehle ausführen:
+
+```bash
+rm -rf moodle
+git clone --branch MOODLE_45_STABLE https://github.com/moodle/moodle.git moodle
+```
+
+---
+
+## 4. bestehendes `moodledata` kopieren
+
+1. Falls ein vorhandenes `moodledata` unter `/var/www/moodledata` existiert, dann in das Projektverzeichnis kopieren:
+
+   ```bash
+   rm -rf moodledata && mkdir moodledata
+   rsync -a /var/www/moodledata/ ./moodledata/
+   ```
+2. Zugriffsrechte setzen, damit der Webserver darauf zugreifen kann:
+
+   ```bash
+   sudo chown -R www-data:www-data moodledata
+   sudo chmod -R 770 moodledata
+   ```
+
+---
+
+## 5. `config.php` anpassen
+
+In der Datei `moodle/config.php` die Datenbank- und Pfadparameter auf die Docker-Umgebung einstellen:
+
+```php
+$CFG->dbtype   = 'mariadb';
+$CFG->dbhost   = 'db';
+$CFG->dbname   = 'moodle';
+$CFG->dbuser   = 'moodle';
+$CFG->dbpass   = 'moodle';
+$CFG->wwwroot  = 'http://localhost:8084';
+$CFG->dataroot = '/var/www/moodledata';
+```
+
+---
+
+## 6. `Dockerfile` erstellen
+
+Datei `Dockerfile` im Projekt-Root anlegen mit folgendem Inhalt:
+
+```dockerfile
+# Verwende PHP 8.1 mit Apache
+FROM php:8.1-apache
+
+# Zeitsynchronisation für GPG
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tzdata && \
+    ln -fs /usr/share/zoneinfo/Europe/Zurich /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+
+# PHP-Erweiterungen und Tools installieren
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnupg \
+    ca-certificates \
+    libpng-dev \
+    libjpeg-dev \
+    libzip-dev \
+    unzip \
+    default-mysql-client && \
+    docker-php-ext-configure gd --with-jpeg && \
+    docker-php-ext-install \
+        mysqli \
+        pdo_mysql \
+        gd \
+        zip && \
+    a2enmod rewrite headers expires && \
+    rm -rf /var/lib/apt/lists/*
+```
+
+> **Abbildung 4:** Inhalt der Datei `Dockerfile`
+> ![image](https://github.com/user-attachments/assets/3a7cb61d-bae8-4f69-b7db-a8574ec343a0)
+
+---
+
+## 7. `docker-compose.yml` anlegen
+
+Datei `docker-compose.yml` im Projekt-Root erstellen und folgenden Inhalt einfügen:
+
+```yaml
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: moodle
+      MYSQL_USER: moodle
+      MYSQL_PASSWORD: moodle
+    volumes:
+      - db_data:/var/lib/mysql
+
+  web:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8084:80"
+    volumes:
+      - ./moodle:/var/www/html:ro
+      - ./moodledata:/var/www/moodledata
+    restart: always
+
+volumes:
+  db_data:
+```
+
+> **Abbildung 5:** Inhalt der Datei `docker-compose.yml`
+> ![image](https://github.com/user-attachments/assets/7ef56ab7-868a-44fc-85f9-0234ac85802a)
+
+
+---
+
+## 8. Container starten und Daten importieren
+
+1. Vorhandene Container und zugehörige Volumes löschen:
+
+   ```bash
+   docker compose down --volumes
+   ```
+2. Nur die Datenbank starten und kurz warten, damit sie initialisiert wird:
+
+   ```bash
+   docker compose up -d db
+   sleep 5
+   ```
+3. SQL‑Dump in den Datenbank‑Container importieren:
+
+   ```bash
+   docker exec -i $(docker ps -qf "name=moodle-docker_db_1") \
+     mysql -u root -proot moodle < moodle.sql
+   ```
+4. Den Web‑Container starten:
+
+   ```bash
+   docker compose up -d web
+   ```
+
+> **Abbildung 3:** Ausgabe von `docker compose up -d`
+> ![image](https://github.com/user-attachments/assets/e89f947c-6d77-48ba-9e68-6038c8c5ffb2)
+
+---
+
+## 9. Funktionstest im Browser
+
+> **Abbildung 2:** Browser-Ansicht von `http://localhost:8084`
+> ![image](https://github.com/user-attachments/assets/fae75f81-ded1-4298-9f7e-480fa037a090)
+
+Im Browser folgende Adresse aufrufen:
+
+```
+http://localhost:8084
+```
+
+Die Moodle‑Startseite mit allen importierten Kursen und Inhalten sollte erscheinen.
+
+---
+
+Die bestehende Moodle‑Instanz läuft nun unter PHP 8.1 und MariaDB 10.5 vollständig containerisiert und ist einsatzbereit.
 
 *Dokument erstellt am: 22.05.2025*
