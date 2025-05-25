@@ -43,12 +43,12 @@ Die vorhandene Moodle-Installation betreibt alle Dienste in einer einzelnen VM, 
 
 ### Team und Organisation
 
-|               Rolle | Name             | Aufgabenbereich                       |
-| ------------------: | ---------------- | ------------------------------------- |
-|      Projektleitung | Gubler Lukas     | Gesamtkoordination, Planung, Review   |
-|              DevOps | Garcia San Diego | Docker-Setup, CI/CD-Pipelines         |
-| Backend-Entwicklung | Gantenbein Kenzo | Moodle-Container, Datenbank-Migration |
-|  Qualitätssicherung | (noch offen)     | Testkonzepte, Abnahmetests            |
+|              Rolle | Name             | Aufgabenbereich                                |
+| -----------------: | ---------------- | ---------------------------------------------- |
+|     Projektleitung | Gubler Lukas     | Gesamtkoordination, Projektleitung, Dockerfile |
+|             DevOps | Garcia San Diego | Moodle-Aktualisierung, Infrastrukturbetrieb    |
+|      Dokumentation | Gantenbein Kenzo | Erstellung und Pflege der Projektdokumentation |
+| Qualitätssicherung | (noch offen)     | Testkonzepte, Abnahmetests                     |
 
 ### Planung und Meilensteine
 
@@ -96,7 +96,7 @@ In dieser Phase wurden folgende Schwerpunkte fachlich bearbeitet:
 
 ### Screenshots der funktionierenden Lösung
 
-![image](https://github.com/user-attachments/assets/3a72ea07-052a-4400-8680-9ed88938eec3)
+![image](https://github.com/user-attachments/assets/0335e8e9-7431-40e1-b5f0-1475b8226209)
 
 ### Datenübernahme
 
