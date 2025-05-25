@@ -219,6 +219,7 @@ Hinweis: Ab diesem Schritt wird ausschliesslich `moodledata1` verwendet.
 1. Wenn man im Projektverzeichnis folgenden Befehl ausführt, dann werden die beiden Container im Hintergrund gestartet:
 
    ```bash
+   docker compose build
    docker compose up -d
    ```
 2. Wenn man mit `docker ps` prüft, dann sollten die Container `moodle_db_exported` und `moodle_exported` laufen.
