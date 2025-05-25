@@ -1,0 +1,276 @@
+<?php
+// This file is part of Moodle - https://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+
+/**
+ * Strings for component 'plagiarism_turnitin', language 'de', version '4.5'.
+ *
+ * @package     plagiarism_turnitin
+ * @category    string
+ * @copyright   1999 Martin Dougiamas and contributors
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+defined('MOODLE_INTERNAL') || die();
+
+$string['allownonor'] = 'Jeden Dateityp zur Übermittlung zulassen?';
+$string['allownonor_help'] = 'Mit dieser Einstellung können alle Dateitypen übermitteln werden. Ist diese Option auf &#34;Ja&#34; gesetzt, werden Übermittlungen ggf. auf ihre Ähnlichkeit überprüft und zum Download bereitgestellt. Außerdem stehen wenn möglich GradeMark-Feedbacktools zur Verfügung.';
+$string['anonblindmarkingnote'] = 'Hinweis: Die separate Turnitin-Einstellung für anonyme Benotung wurde entfernt. Turnitin legt die Einstellung für anonymes Benoten anhand der Moodle-Einstellung für Blindbewertung fest.';
+$string['assigngeterror'] = 'Daten für Turnitin konnten nicht aufgerufen werden.';
+$string['attachrubric'] = 'Dieser Aufgabe eine Rubrik anhängen';
+$string['attachrubricnote'] = 'Hinweis: Studendierende können angehängte Rubriken und deren Inhalt vor dem Übermitteln aufrufen.';
+$string['because'] = 'Ursache: Ein Administrator hat die ausstehende Aufgabe aus der Verarbeitungswarteschlange gelöscht und die Übermittlung an Turnitin abgebrochen.<br /><strong>Die Datei ist weiterhin in Moodle vorhanden; wenden Sie sich an die zuständige Lehrkraft.</strong><br />Fehlercodes siehe unten:';
+$string['changerubricwarning'] = 'Durch das Ändern oder Entfernen einer Rubrik werden alle vorhandenen Rubrikbewertungen der Arbeiten zu dieser Aufgabe entfernt, einschließlich ausgefüllter Bewertungskarten. Gesamtnoten für zuvor bewertete Arbeiten bleiben erhalten.';
+$string['checkagainstnote'] = 'Hinweis: Wenn Sie nicht für mindestens eine der folgenden Abgleichoptionen „Ja“ auswählen, wird KEINE Ähnlichkeitsprüfung generiert.';
+$string['classupdateerror'] = 'Daten des Turnitin-Kurses konnten nicht aktualisiert werden.';
+$string['closebutton'] = 'Schließen';
+$string['code'] = 'Code';
+$string['compareinstitution'] = 'Eingereichte Dateien mit den an dieser Institution übermittelten Arbeiten vergleichen';
+$string['config'] = 'Konfiguration';
+$string['configupdated'] = 'Konfiguration aktualisiert';
+$string['configureerror'] = 'Sie müssen dieses Modul vollständig als Administrator konfigurieren, um es in einem Kurs benutzen zu können. Wenden Sie sich an Ihren Moodle-Administrator.';
+$string['connecttest'] = 'Turnitin-Verbindung testen';
+$string['connecttestcommerror'] = 'Es konnte keine Verbindung zu Turnitin hergestellt werden. Überprüfen Sie Ihre API-URL-Einstellung.';
+$string['connecttesterror'] = 'Bei der Verbindung mit Turnitin ist ein Fehler aufgetreten, siehe Fehlermeldung:<br />';
+$string['connecttestfailed'] = 'Verbindungstest fehlgeschlagen.';
+$string['connecttestsuccess'] = 'Verbindungstest erfolgreich.';
+$string['course'] = 'Kurs';
+$string['coursegeterror'] = 'Kursdaten konnten nicht abgerufen werden.';
+$string['createassignmenterror'] = 'Bei der Erstellung der Aufgabe in Turnitin ist ein Fehler aufgetreten';
+$string['cronsubmittedsuccessfully'] = 'Übermittlung: {$a->title} (TII-ID: {$a->submissionid}) für die Aufgabe {$a->assignmentname} in Kurs {$a->coursename} wurde erfolgreich an Turnitin übermittelt.';
+$string['dbexport'] = 'Datenbank-Export';
+$string['dbexporttable'] = 'Exportiere {$a} Daten';
+$string['defaultinserterror'] = 'Beim Einfügen einer Standardwerteinstellung in die Datenbank ist ein Fehler eingetreten.';
+$string['defaults'] = 'Standardeinstellungen';
+$string['defaultsdesc'] = 'Die folgenden Einstellungen bilden den Standard, wenn Turnitin mit einem Aktivitätsmodul aktiviert ist.';
+$string['defaultupdated'] = 'Turnitin-Standards aktualisiert';
+$string['defaultupdateerror'] = 'Beim Aktualisieren einer Standardwerteinstellung in der Datenbank ist ein Fehler eingetreten.';
+$string['deleteconfirm'] = 'Möchten Sie diese Übermittlung wirklich löschen? \\n\\nDieser Vorgang kann nicht rückgängig gemacht werden.';
+$string['deleted'] = 'Gelöscht';
+$string['deletesubmission'] = 'Übermittlung löschen';
+$string['diagnosticoptions_0'] = 'Aus';
+$string['diagnosticoptions_1'] = 'Standard';
+$string['diagnosticoptions_2'] = 'Debugging';
+$string['digital_receipt_subject'] = 'Dies ist Ihr digitaler Beleg von Turnitin.';
+$string['digitalreceipt'] = 'Digitaler Beleg';
+$string['draftsubmit'] = 'Wann muss die Datei an Turnitin übermittelt werden?';
+$string['editassignmenterror'] = 'Beim Versuch, die Aufgabe in Turnitin zu bearbeiten, ist ein Fehler aufgetreten';
+$string['enablepseudo'] = 'Datenschutz für Teilnehmer/innen aktivieren';
+$string['enablepseudo_desc'] = 'Wenn diese Option ausgewählt ist, werden die E-Mail-Adressen der Teilnehmer/innen für Turnitin-API-Aufrufe in ein Pseudoäquivalent umgewandelt.<br /><i>(<b>Hinweis:</b> Diese Option kann nicht geändert werden, wenn Moodle-Benutzerdaten bereits mit Turnitin synchronisiert wurden.)</i>';
+$string['errorcode0'] = 'Diese Datei wurde nicht an Turnitin übermittelt; wenden Sie sich an Ihren Systemadministrator.';
+$string['errorcode1'] = 'Diese Datei wurde nicht an Turnitin gesendet, da sie nicht genügend Inhalt zum Erstellen einer Ähnlichkeitsprüfung enthält.';
+$string['errorcode10'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da es ein Problem bei der Erstellung der Klasse in Turnitin gibt, das die Übermittlung verhindert. Bitte konsultieren Sie Ihre API-Protokolle für weitere Informationen.';
+$string['errorcode11'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da Daten fehlen';
+$string['errorcode12'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da sie zu einer Aufgabe gehört, bei der der Kurs gelöscht wurde. Zeilen-ID: ({$a->id}) | Kursmodul-ID: ({$a->cm}) | Benutzer-ID: ({$a->userid})';
+$string['errorcode13'] = 'Diese submissionid - {$a->externalid} wurde nicht in Turnitin gefunden. Der Ähnlichkeitsindex und andere Einreichungsdaten können nicht abgerufen werden.';
+$string['errorcode14'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da der Versuch, zu dem sie gehört, nicht gefunden werden konnte';
+$string['errorcode15'] = 'Berichte sofort generieren. Einreichungen werden sofort zum Repository hinzugefügt (wenn das Repository eingestellt ist).';
+$string['errorcode2'] = 'Diese Datei wird nicht an Turnitin übermittelt, da sie die maximal zulässige Größe von {$a->maxfilesize} überschreitet.';
+$string['errorcode3'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da der Benutzer die Endbenutzer-Lizenzvereinbarung nicht akzeptiert hat.';
+$string['errorcode4'] = 'Sie müssen einen unterstützten Dateityp für diese Aufgabe hochladen. Folgende Dateitypen werden akzeptiert: DOC, DOCX, PPT, PPTX, PPS, PPSX, PDF, TXT, HTM, HTML, HWP, ODT, WPD, PS und RTF.';
+$string['errorcode5'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da beim Erstellen des Moduls in Turnitin ein Problem aufgetreten ist, das Übermittlungen verhindert. Weitere Informationen finden Sie in Ihren API-Protokollen.';
+$string['errorcode6'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da beim Bearbeiten der Moduleinstellungen in Turnitin ein Problem aufgetreten ist, das Übermittlungen verhindert. Weitere Informationen finden Sie in Ihren API-Protokollen.';
+$string['errorcode7'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da beim Erstellen des Benutzers in Turnitin ein Problem aufgetreten ist, das Übermittlungen verhindert. Weitere Informationen finden Sie in Ihren API-Protokollen.';
+$string['errorcode8'] = 'Diese Datei wurde nicht an Turnitin übermittelt, da beim Erstellen der temporären Datei ein Problem aufgetreten ist. Die wahrscheinlichste Ursache ist ein ungültiger Dateiname. Benennen Sie die Datei um, und laden Sie sie mit der Option zum Bearbeiten von Übermittlungen erneut hoch.';
+$string['errorcode9'] = 'Die Datei kann nicht übermittelt werden, da im Dateipool kein zugänglicher Inhalt für eine Übermittlung vorhanden ist.';
+$string['errors'] = 'Fehler';
+$string['excludebiblio'] = 'Bibliografie ausschließen';
+$string['excludebiblio_help'] = 'Mit dieser Einstellung können Trainer/innen festlegen, dass bei der Erstellung von Ähnlichkeitsprüfungen Texte im Literaturverzeichnis, in den zitierten Werken oder in den Referenzabschnitten von studentischen Arbeiten nicht auf Übereinstimmungen geprüft werden. Diese Einstellung kann in einzelnen Ähnlichkeitsprüfungen überschrieben werden.';
+$string['excludepercent'] = 'Prozent';
+$string['excludequoted'] = 'Zitiertes Material ausschließen';
+$string['excludequoted_help'] = 'Mit dieser Einstellung können Trainer/innen festlegen, dass Text, der in Anführungszeichen steht, bei der Erstellung von Ähnlichkeitsprüfungen nicht auf Übereinstimmungen geprüft wird. Diese Einstellung kann in einzelnen Ähnlichkeitsprüfungen überschrieben werden.';
+$string['excludesmallmatchesvalue'] = 'Ausschlusswert';
+$string['excludevalue'] = 'Geringfügige Übereinstimmungen ausschließen';
+$string['excludevalue_help'] = 'Mit dieser Einstellung können Trainer/innen festlegen, dass Übereinstimmungen, die nicht lang genug sind (vom Dozenten festgelegt), bei der Erstellung von Ähnlichkeitsprüfungen nicht berücksichtigt werden. Diese Einstellung kann in einzelnen Ähnlichkeitsprüfungen überschrieben werden.';
+$string['excludewords'] = 'Wörter';
+$string['faultcode'] = 'Fehlercode';
+$string['filedoesnotexist'] = 'Datei wurde gelöscht';
+$string['grademark'] = 'GradeMark';
+$string['id'] = 'ID';
+$string['institutionalrepository'] = 'Institutions-Repository (wenn vorhanden)';
+$string['internetcheck'] = 'Abgleich mit dem Internet';
+$string['internetcheck_help'] = 'Abgleich mit dem Turnitin-Internet-Repository bei der Bearbeitung von Ähnlichkeitsprüfungen für Arbeiten. Der Prozentsatz des Ähnlichkeitsindexes kann sinken, wenn diese Option deaktiviert wird.';
+$string['invalidtablename'] = 'Tabelle {$a} konnte nicht exportiert werden';
+$string['journalcheck'] = 'Abgleich mit Zeitungen,<br />Periodika und anderen Publikationen';
+$string['journalcheck_help'] = 'Abgleich mit dem Turnitin-Repository für Zeitschriften, Periodika und Publikationen bei der Bearbeitung von Ähnlichkeitsprüfungen für Arbeiten. Der Prozentsatz des Ähnlichkeitsindexes kann sinken, wenn diese Option deaktiviert wird.';
+$string['launchpeermarkmanager'] = 'PeerMark-Manager starten';
+$string['launchpeermarkreviews'] = 'PeerMark-Reviews starten';
+$string['launchquickmarkmanager'] = 'QuickMark-Manager starten';
+$string['launchrubricmanager'] = 'Rubrikmanager starten';
+$string['launchrubricview'] = 'Die für das Markieren verwendete Rubik anzeigen';
+$string['line'] = 'Linie';
+$string['loadingdv'] = 'Turnitin-Dokumentenansicht wird geladen...';
+$string['locked_message'] = 'Gesperrte Nachricht';
+$string['locked_message_default'] = 'Diese Einstellung ist auf Websiteebene gesperrt.';
+$string['locked_message_help'] = 'Wenn Einstellungen gesperrt sind, wird in dieser Nachricht der Grund dafür angegeben.';
+$string['message'] = 'Nachricht';
+$string['messageprovider:submission'] = 'Turnitin-Plugin zur Plagiarismuserkennung – Benachrichtigungen zum digitalen Beleg';
+$string['module'] = 'Module';
+$string['nointegration'] = 'Keine Integration';
+$string['norepository'] = 'Kein Repository';
+$string['norubric'] = 'Keine Rubrik';
+$string['noscriptula'] = '(Da Sie Javascript nicht aktiviert haben, müssen Sie diese Seite manuell aktualisieren, ehe Sie nach dem Akzeptieren der Nutzungsbedingungen von Turnitin eine Übermittlung vornehmen können)';
+$string['notavailableyet'] = 'Nicht verfügbar';
+$string['notorcapable'] = 'Für diese Datei lässt sich keine Ähnlichkeitsprüfung erstellen.';
+$string['otherrubric'] = 'Rubrik einer anderen Lehrkraft verwenden';
+$string['pending'] = 'Ausstehend';
+$string['pluginname'] = 'Turnitin-Plugin zur Plagiarismuserkennung';
+$string['pp_agreement'] = 'Haftungsausschluss / Zustimmung';
+$string['pp_agreement_default'] = 'Durch das Anklicken des Kontrollkästchens bestätige ich, dass diese Übermittlung meine eigene Arbeit ist. Ich übernehme die Verantwortung für jede Copyright-Verletzung, die aufgrund meiner Übermittlung entstehen könnte.';
+$string['pp_agreement_desc'] = '<b>[Optional]</b><br />Geben Sie eine Bestätigung der Nutzungsbedingungen für Übermittlungen an.<br />(<b>Hinweis:</b> Wenn keine Angabe gemacht wird, müssen Studenten bei der Übermittlung keine Bestätigung angeben.)';
+$string['pp_classcreationerror'] = 'Dieser Kurs konnte auf Turnitin nicht erstellt werden, für zusätzliche Informationen prüfen Sie bitte Ihre API-Protokolle';
+$string['pp_createsubmissionerror'] = 'Beim Versuch, eine Übermittlung zu Turnitin einzurichten, ist ein Fehler aufgetreten.';
+$string['pp_digital_receipt_message'] = 'Sehr geehrte/r {$a->firstname} {$a->lastname},<br /><br />Sie haben die Datei <strong>{$a->submission_title}</strong> für die Aufgabe <strong>{$a->assignment_name}{$a->assignment_part}</strong> in Kurs <strong>{$a->course_fullname}</strong> am <strong>{$a->submission_date}</strong> erfolgreich hochgeladen. Ihre Übermittlungs-ID lautet <strong>{$a->submission_id}</strong>. Ihren vollständigen digitalen Beleg können Sie über die Schaltfläche „Drucken/Download“ in der Dokumentenansicht anzeigen und drucken.<br /><br />Vielen Dank, dass Sie Turnitin verwenden,<br /><br />das Turnitin-Team';
+$string['pp_submission_error'] = 'Turnitin hat einen Fehler für Ihre Übermittlung zurückgegeben:';
+$string['pp_updatesubmissionerror'] = 'Beim Versuch, Ihre Übermittlung zu Turnitin erneut vorzunehmen, ist ein Fehler aufgetreten.';
+$string['ppassignmentcreateerror'] = 'Dieses Modul konnte auf Turnitin nicht erstellt werden, für zusätzliche Informationen prüfen Sie bitte Ihre API-Protokolle';
+$string['ppassignmentediterror'] = 'Modul {$a->title} (TII-ID: {$a->assignmentid}) konnte in Turnitin nicht bearbeitet werden; weitere Informationen finden Sie in Ihren API-Protokollen.';
+$string['ppcronsubmissionlimitreached'] = 'Von diesem Cron-Ausdruck werden keine weiteren Übermittlungen mehr an Turnitin gesendet, da nur {$a} pro Ausführung verarbeitet werden.';
+$string['pperrorsdesc'] = 'Beim Versuch, die folgenden Dateien bei Turnitin hochzuladen, ist ein Problem aufgetreten. Wählen Sie für eine erneute Übermittlung die gewünschten Dateien aus, und klicken Sie auf die Schaltfläche „Erneut übermitteln“. Diese Dateien werden dann bei der nächsten Cron-Ausführung verarbeitet.';
+$string['pperrorsfail'] = 'Bei einigen der ausgewählten Dateien ist ein Problem aufgetreten. Für diese Dateien konnte kein neues Cron-Ereignis erstellt werden.';
+$string['pperrorssuccess'] = 'Die ausgewählten Dateien wurden erneut übermittelt und werden von Cron verarbeitet.';
+$string['ppeventsfailedconnection'] = 'In dieser Cron-Ausführung werden vom Turnitin-Plugin zur Plagiarismuserkennung keine Ereignisse verarbeitet, da keine Verbindung mit Turnitin hergestellt werden kann.';
+$string['ppqueuesize'] = 'Anzahl der Ereignisse in der Ereigniswarteschlange des Turnitin-Plugin zur Plagiarismuserkennung';
+$string['ppsubmissionerrorseelogs'] = 'Diese Datei wurde nicht an Turnitin übermittelt; wenden Sie sich an Ihren Systemadministrator.';
+$string['ppsubmissionerrorstudent'] = 'Diese Datei wurde nicht an Turnitin übermittelt, für zusätzliche Details kontaktieren Sie bitte Ihren Tutor';
+$string['privacy:metadata:core_files'] = 'Turnitin Assignment speichert Dateien, die in Moodle hochgeladen wurden, um eine Turnitin-Einreichung zu bilden.';
+$string['privacy:metadata:plagiarism_turnitin_client'] = 'Um eine Arbeit erfolgreich bei Turnitin einzureichen, müssen bestimmte Nutzerdaten zwischen Moodle und Turnitin ausgetauscht werden. Weitere Informationen zu Moodle-Plugins und GDPR finden Sie unter: https://help.turnitin.com/feedback-studio/moodle/moodle-plugins-and-gdpr.htm';
+$string['privacy:metadata:plagiarism_turnitin_client:email'] = 'Die E-Mail-Adresse einer Person wird von Moodle geteilt, um die Erstellung eines Turnitin-Kontos zu ermöglichen.';
+$string['privacy:metadata:plagiarism_turnitin_client:firstname'] = 'Der Vorname einer Person wird an Turnitin gesendet, damit die Person identifiziert werden kann.';
+$string['privacy:metadata:plagiarism_turnitin_client:lastname'] = 'Der Nachname einer Person wird an Turnitin gesendet, damit die Person identifiziert werden kann.';
+$string['privacy:metadata:plagiarism_turnitin_client:submission_content'] = 'Bitte beachten Sie, dass der Inhalt einer Datei/Einreichung zur Bearbeitung an Turnitin gesendet wird.';
+$string['privacy:metadata:plagiarism_turnitin_client:submission_filename'] = 'Der Name der eingereichten Datei wird an Turntin gesendet, damit sie identifizierbar ist.';
+$string['privacy:metadata:plagiarism_turnitin_client:submission_title'] = 'Der Titel der Einreichung wird an Turntin gesendet, damit er identifizierbar ist.';
+$string['privacy:metadata:plagiarism_turnitin_files'] = 'Informationen, die eine Moodle-Einreichung mit einer Turnitin-Einreichung verknüpfen.';
+$string['privacy:metadata:plagiarism_turnitin_files:attempt'] = 'Ein Zeitstempel, der angibt, wann eine Person die Rückmeldung zu ihrer Eingabe gesehen hat.';
+$string['privacy:metadata:plagiarism_turnitin_files:grade'] = 'Die Bewertung, mit der Trainer/innen die Arbeit bewertet haben.';
+$string['privacy:metadata:plagiarism_turnitin_files:lastmodified'] = 'Ein Zeitstempel, der angibt, wann eine Person Eingabe zuletzt geändert hat.';
+$string['privacy:metadata:plagiarism_turnitin_files:orcapable'] = 'Zeigt an, ob Turnitin in der Lage war, eine Ähnlichkeitsprüfung für die Einreichung des/der Teilnehmer/in zu erstellen.';
+$string['privacy:metadata:plagiarism_turnitin_files:student_read'] = 'Zeigt an, ob eine Person ihr Feedback gelesen hat.';
+$string['privacy:metadata:plagiarism_turnitin_files:submissionscore'] = 'Der Ähnlichkeitsindex der Einreichung.';
+$string['privacy:metadata:plagiarism_turnitin_files:transmatch'] = 'Gibt an, ob Turnitin übersetzte Übereinstimmungen verwendet hat, um eine Ähnlichkeitsprüfung für die Einreichung zu erstellen.';
+$string['privacy:metadata:plagiarism_turnitin_files:userid'] = 'Die ID der Person, die eine Eingabe gemacht hat.';
+$string['privacy:metadata:plagiarism_turnitin_users'] = 'Informationen über Plagiat-Plugin-Nutzer/in.';
+$string['privacy:metadata:plagiarism_turnitin_users:instructor_defaults'] = 'Die Standardeinstellungen der Trainer/innen für die Zuweisung';
+$string['privacy:metadata:plagiarism_turnitin_users:instructor_rubrics'] = 'Die Turnitin-Bewertungskarten, die dem Dozenten gehören';
+$string['privacy:metadata:plagiarism_turnitin_users:turnitin_uid'] = 'Die Turnitin-Konto-ID der/des Nutzers/in.';
+$string['privacy:metadata:plagiarism_turnitin_users:user_agreement_accepted'] = 'Zeigt an, ob die Person die Turnitin-Endnutzer-Lizenzvereinbarung (EULA) akzeptiert hat.';
+$string['privacy:metadata:plagiarism_turnitin_users:userid'] = 'Die ID der Person, die dieses Plugin verwendet.';
+$string['pseudoemailaddress'] = 'Pseudo E-Mail-Adresse';
+$string['pseudoemaildomain'] = 'Pseudo E-Mail-Domain';
+$string['pseudoemaildomain_desc'] = '<b>[Optional]</b><br />Eine optionale Domäne für Pseudo-E-Mail-Adressen. (Ohne Angabe wird standardmäßig @tiimoodle.com verwendet.)';
+$string['pseudoemailsalt'] = 'Pseudo Encryption Salt';
+$string['pseudoemailsalt_desc'] = '<b>[Optional]</b><br />Ein optionaler Salt, der die Komplexität der für Studenten generierten Pseudo-E-Mail-Adressen erhöht.<br />(<b>Hinweis:</b> Der Salt sollte nicht verändert werden, damit die Pseudo-E-Mail-Adressen konsistent bleiben.)';
+$string['pseudofirstname'] = 'Teilnehmer/in Pseudo Vorname';
+$string['pseudofirstname_desc'] = '<b>[Optional]</b><br />Vorname der Person für die Anzeige in der Turnitin-Dokumentenansicht';
+$string['pseudolastname'] = 'Teilnehmer/in Pseudo Nachname';
+$string['pseudolastname_desc'] = 'Den Nachnamen der Person in der Dokumentenansicht von Turnitin anzeigen';
+$string['pseudolastnamegen'] = 'Nachnamen automatisch erstellen';
+$string['pseudolastnamegen_desc'] = 'Wenn diese Option aktiviert und der Pseudo-Nachname auf ein Nutzerprofilfeld festgelegt ist, wird das Feld automatisch mit einem eindeutigen Bezeichner ausgefüllt.';
+$string['queued'] = 'In der Warteschleife';
+$string['relinkusers'] = 'Nutzer/innen erneut verlinken';
+$string['reportgen_duedate_add_duedate'] = 'Berichte am Fälligkeitsdatum erstellen. Einreichungen werden am Fälligkeitsdatum zum Repository hinzugefügt (wenn ein Repository gesetzt ist).';
+$string['reportgen_immediate_add_duedate'] = 'Berichte sofort erstellen. Einreichungen werden am Fälligkeitsdatum zum Repository hinzugefügt (wenn ein Repository gesetzt ist).';
+$string['reportgen_immediate_add_immediate'] = 'Berichte sofort erstellen. Einreichungen werden sofort zum Repository hinzugefügt (wenn ein Repository gesetzt ist).';
+$string['reportgenspeed'] = 'Geschwindigkeit beim Erstellen des Berichts';
+$string['reportgenspeed_help'] = 'Für diese Aufgabeneinstellung sind drei Optionen verfügbar: \'Berichte sofort erstellen (erneute Übermittlungen sind unzulässig)\', \'Berichte sofort erstellen (erneute Übermittlungen sind bis zum Fälligkeitsdatum zulässig)\' und \'Berichte am Fälligkeitsdatum erstellen (erneute Übermittlungen sind bis zum Fälligkeitsdatum zulässig)\'<br /><br />Mit der Option \'Berichte sofort erstellen (erneute Übermittlungen sind unzulässig)\' wird der Ähnlichkeitsbericht sofort erstellt, wenn ein/e Teilnehmer/in eine Übermittlung vornimmt. Ist diese Option festgelegt, können Ihre Teilnehmer/innen keine erneuten Übermittlungen für die Aufgabe vornehmen.<br /><br />Wenn Sie erneute Übermittlungen zulassen möchten, wählen Sie die Option \'Berichte sofort erstellen (erneute Übermittlungen sind bis zum Fälligkeitsdatum zulässig)\'. Bei dieser Option können Teilnehmer/innen bis zum Fälligkeitsdatum wiederholt Arbeiten für die Aufgabe übermitteln. Die Verarbeitung von Ähnlichkeitsberichten für erneute Übermittlungen kann bis zu 24 Stunden dauern.<br /><br />Mit der Option \'Berichte am Fälligkeitsdatum erstellen (erneute Übermittlungen sind bis zum Fälligkeitsdatum zulässig)\' wird der Ähnlichkeitsbericht erst am Fälligkeitsdatum für Aufgabe erstellt. Mit dieser Einstellung werden bei der Erstellung des Ähnlichkeitsberichts alle für die Aufgabe übermittelten Arbeiten miteinander abgeglichen.';
+$string['reportgenspeed_resubmission'] = 'Sie haben bereits eine Abgabe zu dieser Aufgabe eingereicht und es wurde eine Ähnlichkeitsprüfung für Ihre Einreichung erstellt. Wenn Sie Ihre Arbeit erneut einreichen, wird Ihre frühere Einreichung ersetzt und ein neuer Bericht erstellt. Nach {$a->num_resubmissions} erneuten Übermittlungen müssen Sie {$a->num_hours} Stunden nach einer erneuten Übermittlung warten, um eine neue Ähnlichkeitsprüfung zu sehen.';
+$string['repositoryoptions_0'] = 'Standardmäßige Repository-Optionen für Trauner/innen aktivieren';
+$string['repositoryoptions_1'] = 'Erweiterte Ablageoptionen für Trainer/innen aktivieren';
+$string['repositoryoptions_2'] = 'Alle Arbeiten an die Standardablage übermitteln';
+$string['repositoryoptions_3'] = 'Übermitteln Sie keine Arbeiten an eine Ablage';
+$string['repositoryoptions_4'] = 'Alle Arbeiten an das Institutionen-Repository übermitteln';
+$string['resubmitselected'] = 'Ausgewählte Dateien erneut übermitteln';
+$string['resubmitting'] = 'Wird erneut übermittelt...';
+$string['resubmittoturnitin'] = 'Erneut an Turnitin übermitteln';
+$string['savesuccess'] = 'Änderungen gespeichert';
+$string['saveusage'] = 'Datenanzeige sichern';
+$string['semptytable'] = 'Keine Ergebnisse vorhanden.';
+$string['sendqueuedsubmissions'] = 'Sende Dateien in der Warteschlange des Turnitin-Plugin zur Plagiarismuserkennung';
+$string['sharedrubric'] = 'Freigegebene Rubrik';
+$string['showusage'] = 'Datenspeicher anzeigen';
+$string['similarity'] = 'Ähnlichkeit';
+$string['sinfo'] = 'Anzeigen _START_ bis _END_ von _TOTAL_ Einträgen.';
+$string['slengthmenu'] = '_MENU_ Einträge anzeigen';
+$string['snext'] = 'Nächste';
+$string['spapercheck'] = 'Abgleich mit vorhandenen Arbeiten';
+$string['spapercheck_help'] = 'Abgleich mit dem Turnitin-Repository für studentische Arbeiten bei der Bearbeitung von Ähnlichkeitsprüfungen für Arbeiten. Der Prozentsatz des Ähnlichkeitsindexes kann sinken, wenn diese Option deaktiviert wird.';
+$string['sprevious'] = 'Vorherige';
+$string['sprocessing'] = 'Daten werden von Turnitin geladen...';
+$string['ssearch'] = 'Suche:';
+$string['standardrepository'] = 'Standard-Repository';
+$string['student'] = 'Teilnehmer/in';
+$string['student_notread'] = 'Die Person hat die Arbeit nicht aufgerufen.';
+$string['student_read'] = 'Die Person hat die Arbeit aufgerufen über:';
+$string['studentdataprivacy'] = 'Datenschutzeinstellungen für Teilnehmer/innen';
+$string['studentdataprivacy_desc'] = 'Die folgenden Einstellungen können so konfiguriert werden, dass persönliche Daten von Teilnehmer/innen nicht über die API an Turnitin übermittelt werden.';
+$string['studentreports'] = 'Teilnehmer/innen die Ähnlichkeitsprüfung anzeigen';
+$string['studentreports_help'] = 'Ermöglicht Teilnehmer/innen das Anzeigen von Turnitin-Ähnlichkeitsprüfungen. Wenn Sie die Option "Ja" wählen, können Teilnehmer/innen die von Turnitin erstellte Ähnlichkeitsprüfung ansehen.';
+$string['submitondraft'] = 'Datei beim ersten Hochladen übermitteln';
+$string['submitonfinal'] = 'Datei übermitteln, wenn sie zum Bewerten abgesendet wurde';
+$string['submitpapersto'] = 'Studienendenarbeiten ablegen';
+$string['submitpapersto_help'] = '<strong>Kein Repository: </strong><br />Turnitin wird angewiesen, eingereichte Dokumente nicht in einem Repository zu speichern. Wir verarbeiten das Dokument nur, um die erste Ähnlichkeitsprüfung durchzuführen.<br /><br /><strong>Standard-Repository: </strong><br />Turnitin speichert eine Kopie des eingereichten Dokuments nur im Standard-Repository. Durch Auswahl dieser Option wird Turnitin angewiesen, gespeicherte Dokumente nur für Ähnlichkeitsprüfungen mit zukünftig eingereichten Dokumenten zu verwenden.<br /><br /><strong>Institutionelles Repository (sofern anwendbar): </strong><br />Durch Auswahl dieser Option wird Turnitin angewiesen, eingereichte Dokumente nur in einem privaten Repository Ihrer Institution hinzuzufügen. Ähnlichkeitsprüfungen der eingereichten Dokumente werden nur von anderen Trainer/innen Ihrer Institution durchgeführt.';
+$string['szerorecords'] = 'Keine Datensätze zum Anzeigen.';
+$string['tii_submission_failure'] = 'Weitere Informationen erhalten Sie von Ihrem Tutor oder dem Systemadministrator.';
+$string['tiiaccountconfig'] = 'Konfiguration des Turnitin-Kontos';
+$string['tiiaccountsettings'] = 'Einstellungen des Turnitin-Kontos';
+$string['tiiaccountsettings_desc'] = 'Stellen Sie sicher, dass diese Einstellungen der Konfiguration in Ihrem Turnitin-Account entsprechen, da andernfalls Probleme mit der Aufgabenerstellung und/oder von Teilnehmer/innen übermittelten Arbeiten auftreten können.';
+$string['tiiassignmentgeterror'] = 'Beim Versuch, eine Aufgabe von Turnitin abzurufen, ist ein Fehler aufgetreten.';
+$string['tiidebugginglogs'] = 'Debugging und Logging';
+$string['tiiexplain'] = 'Turnitin ist ein kommerzielles Produkt, und Sie benötigen ein zahlungspflichtiges Abonnement, um diesen Dienst nutzen zu können. Weitere Informationen finden Sie unter <a href="https://docs.moodle.org/en/Turnitin_administration">https://docs.moodle.org/en/Turnitin_administration</a>.';
+$string['tiimiscsettings'] = 'Verschiedene Plugin-Einstellungen';
+$string['tiisubmissiongeterror'] = 'Beim Versuch, eine Übermittlung vom Turnitin zu erhalten, ist ein Fehler aufgetreten.';
+$string['tiisubmissionsgeterror'] = 'Beim Versuch, von Turnitin Übermittlungen zu dieser Aufgabe abzurufen, ist ein Fehler aufgetreten.';
+$string['tiiusergeterror'] = 'Beim Versuch, die Benutzerdaten von Turnitin abzurufen, trat ein Fehler auf';
+$string['transmatch'] = 'Übersetzte Übereinstimmung';
+$string['transmatch_desc'] = 'Bestimmt, ob übersetzte Übereinstimmung als Einstellung auf dem Einrichtungsbildschirm für Aufgaben verfügbar sein soll.<br /><i>(Aktivieren Sie diese Option nur, wenn übersetzte Übereinstimmung in Ihrem Turnitin-Konto aktiviert ist.)</i>';
+$string['turnitin'] = 'Turnitin';
+$string['turnitin:enable'] = 'Turnitin aktivieren';
+$string['turnitin:viewfullreport'] = 'Ähnlichkeitsprüfung anzeigen';
+$string['turnitin_score_refresh_alert'] = 'Wir haben eine hohe Latenz bei Ihrer Verbindung zu Turnitin festgestellt. Um dieses Problem zu beheben, haben wir die automatischen Updates für den Posteingang deaktiviert. Aktualisieren, um Einreichungen zu aktualisieren';
+$string['turnitinaccountid'] = 'Turnitin Account ID';
+$string['turnitinapiurl'] = 'Turnitin API URL';
+$string['turnitinconfig'] = 'Konfiguration für das Turnitin-Plugin zur Plagiarismuserkennung';
+$string['turnitindefaults'] = 'Standardeinstellungen für das Turnitin-Plugin zur Plagiarismuserkennung';
+$string['turnitindeletionerror'] = 'Die Löschung der Turnitin-Übermittlung ist fehlgeschlagen. Die lokale Moodle-Kopie wurde entfernt, die Übermittlung bei Turnitin konnte jedoch nicht gelöscht werden.';
+$string['turnitindiagnostic'] = 'Diagnosemodus einschalten';
+$string['turnitindiagnostic_desc'] = '<b>[Achtung]</b><br />Aktivieren Sie den Diagnosemodus nur, um Probleme mit der Turnitin-API aufzuspüren.';
+$string['turnitinenablepeermark'] = 'Peermark-Aufgaben aktivieren';
+$string['turnitinenablepeermark_desc'] = 'Wählen Sie, ob die Erstellung von Peermark-Aufgaben erlaubt sein soll.<br/><i>(Dies ist nur verfügbar, wenn Sie Peermark für Ihr Turnitin-Konto konfiguriert haben)</i>';
+$string['turnitineula'] = 'Turnitin EULA';
+$string['turnitinid'] = 'Turnitin-ID';
+$string['turnitinpluginsettings'] = 'Einstellungen für das Turnitin-Plugin zur Plagiarismuserkennung';
+$string['turnitinppulapost'] = 'Ihre Datei wurde nicht an Turnitin übermittelt. Klicken Sie hier, um unsere EULA zu akzeptieren.';
+$string['turnitinppulapre'] = 'Vor der Übermittung einer Datei an Turnitin müssen Sie unsere EULA (Endbenutzer-Lizenzvereinbarung) akzeptieren. Wenn Sie die EULA nicht akzeptieren, wird Ihre Datei nur an Moodle übermittelt. Klicken Sie zum Akzeptieren hier.';
+$string['turnitinrefreshingsubmissions'] = 'Übermittlungen werden aktualisiert...';
+$string['turnitinrefreshsubmissions'] = 'Übermittlungen aktualisieren';
+$string['turnitinrepositoryoptions'] = 'Ablage für Arbeiten zu Aufgaben';
+$string['turnitinrepositoryoptions_desc'] = 'Wählen Sie die Repository-Optionen für Turnitin-Aufgaben.<br /><i>(Ein institutionelles Repository ist nur verfügbar, wenn Sie es für Ihr Turnitin-Konto konfiguriert haben)</i>';
+$string['turnitinrepositoryoptions_help'] = '<strong>Standardmässige Repository-Optionen für Trainer/innen aktivieren: </strong><br /> Trainer/innen können in Turnitin festlegen, ob Dokumente zum Standard-Repository, zum privaten Repository der Institution oder zu keinem Repository hinzugefügt werden sollen.<br /><br /><strong>Erweiterte Ablageoptionen für Trainer/innen aktivieren: </strong><br />Mit dieser Option können Trainer/innen die Aufgabeneinstellungen anzeigen, damit Teilnehmer/innen in Turnitin festlegen können, wo ihre Dokumente gespeichert werden. Teilnehmer/innen können wählen, ob ihre Dokumente zum Standard-Repository oder zum privaten Repository der Institution hinzugefügt werden.<br /><br /><strong>Alle Arbeiten an die Standardablage übermitteln: </strong><br />Alle Dokumente werden standardmässig zum Standard-Repository hinzugefügt.<br /><br /><strong>Übermitteln Sie keine Arbeiten an eine Ablage: </strong><br />Dokumente werden ausschließlich für die eigentliche Prüfung durch Turnitin und zum Anzeigen für die Trainer/innen zur Benotung verwendet.<br /><br /><strong>Alle Arbeiten an das Instituts-Repository übermitteln: </strong><br />In Turnitin ist festgelegt, dass alle übermittelten Arbeiten in der Institutionsablage für Arbeiten gespeichert werden. Ähnlichkeitsprüfungen der übermittelten Dokumente werden ausschließlich von anderen Trainer/innen in Ihrer Institution durchgeführt.';
+$string['turnitinsecretkey'] = 'Turnitin Shared Key';
+$string['turnitinstatus'] = 'Turnitin-Status';
+$string['turnitintoolofflineerror'] = 'Es ist ein vorübergehendes Problem aufgetreten. Bitte versuchen Sie es später erneut.';
+$string['turnitinuseanon'] = 'Anonyme Bewertung verwenden';
+$string['turnitinuseanon_desc'] = 'Wählen Sie aus, ob beim Bewerten von Einreichungen eine anonyme Bewertung zugelassen werden soll.<br />Die anonyme Bewertung wird wingestellt, wenn die Einstellung für die blinde Bewertung in einem Aufgabenmodul aktiviert ist.<br /><i>(Dies ist nur verfügbar, wenn Sie die anonyme Bewertung für Ihr Turnitin-Konto konfiguriert haben.)</i>';
+$string['turnitinusegrademark'] = 'GradeMark verwenden';
+$string['turnitinusegrademark_desc'] = 'Wählen Sie, ob die GradeMark verwendet werden soll, um Einreichungen zu bewerten.<br/><i>(Dies ist nur verfügbar, wenn Sie GradeMark für Ihr Turnitin-Konto konfiguriert haben)</i>';
+$string['unlinkrelinkusers'] = 'Nutzer/innen erneut verlinken / Verlinkung aufheben';
+$string['unlinkusers'] = 'Nutzer/innen trennen';
+$string['updatereportscores'] = 'Ähnlichkeitsindizes für das Turnitin-Plagiats-Plugin aktualisieren';
+$string['usercreationerror'] = 'Benutzererstellung in Turnitin fehlgeschlagen';
+$string['userfinderror'] = 'Es gab einen Fehler bei der Suche nach dem Benutzer in Turnitin';
+$string['userupdateerror'] = 'Benutzerdaten konnten nicht aktualisiert werden';
+$string['useturnitin'] = 'Turnitin aktivieren';
+$string['useturnitin_mod'] = 'Turnitin aktivieren für {$a}';
