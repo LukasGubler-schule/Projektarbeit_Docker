@@ -96,7 +96,7 @@ In dieser Phase wurden folgende Schwerpunkte fachlich bearbeitet:
 
 ### Screenshots der funktionierenden Lösung
 
-*(Platzhalter: Screenshots folgen nach erfolgreichem Test)*
+![image](https://github.com/user-attachments/assets/3a72ea07-052a-4400-8680-9ed88938eec3)
 
 ### Datenübernahme
 
