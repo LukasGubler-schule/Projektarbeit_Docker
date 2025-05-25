@@ -12,8 +12,8 @@
    * [Screenshots der funktionierenden Lösung](#screenshots-der-funktionierenden-lösung)
    * [Datenübernahme](#datenübernahme)
    * [Unterschiedliche Container](#unterschiedliche-container)
-   * [Schritt-für-Schritt-Anleitung: Nutzung des Moodle-Images](#schritt-für-schritt-anleitung-nutzung-des-moodle-images)
-   * [Aufbau von Dockerfile und docker-entrypoint.sh](#aufbau-von-dockerfile-und-docker-entrypointsh)
+   * [Schritt-für-Schritt-Anleitung: Alte Moodle-Instanz exportieren](#schritt-für-schritt-anleitung-alte-moodle-instanz-exportieren)
+   * [Schritt-für-Schritt-Anleitung: Neue Moodle-Instanz migrieren](#schritt-für-schritt-anleitung-neue-moodle-instanz-migrieren)
 
 ---
 
