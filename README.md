@@ -191,7 +191,7 @@ Hinweis: Ab diesem Schritt wird ausschliesslich `moodledata1` verwendet.
        driver: bridge
    ```
 
-> **Abbildung 2:** Vollständiger Inhalt der Datei `docker-compose.yml`
+> **Abbildung 2:** Das `docker-compose.yml` sollte nun so aussehen
 > ![image](https://github.com/user-attachments/assets/9fc3153f-b89a-4e40-9a48-5e343f0a9832)
 
 ---
@@ -264,7 +264,7 @@ Hinweis: Ab diesem Schritt wird ausschliesslich `moodledata1` verwendet.
 
 1. Wenn man im Browser die URL `http://localhost:8085` aufruft, dann erscheint die typische Moodle-Startseite mit allen migrierten Kursen.
 
-> **Abbildung 3:** Beispielansicht des migrierten Moodle-Frontends
+> **Abbildung 3:** Ansicht des migrierten Moodle-Frontends
 > ![image](https://github.com/user-attachments/assets/60bdfcff-a38f-4371-b34c-b8d7db96a586)
 
 
@@ -387,7 +387,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 ```
 
-> **Abbildung 4:** Inhalt der Datei `Dockerfile`
+> **Abbildung 4:** Das `Dockerfile` sollte nun so aussehen
 > ![image](https://github.com/user-attachments/assets/3a7cb61d-bae8-4f69-b7db-a8574ec343a0)
 
 ---
@@ -426,7 +426,7 @@ volumes:
   db_data:
 ```
 
-> **Abbildung 5:** Inhalt der Datei `docker-compose.yml`
+> **Abbildung 5:** Das `docker-compose.yml` sollte nun so aussehen
 > ![image](https://github.com/user-attachments/assets/7ef56ab7-868a-44fc-85f9-0234ac85802a)
 
 
